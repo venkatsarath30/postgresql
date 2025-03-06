@@ -2,9 +2,11 @@
 ************Set Up a Highly Available PostgreSQL Release 15 Cluster on Oracle Linux 8************
 *************************************************************************************************
 Virtual box setting. Should have two network adaptors. 1st for host on for host connections. 2nd NAT for internet.
+```bash
 cpu = 4 core
 RAM = 4 GB
 Disk = 50
+~~~
 Patroni high availability cluster is comprised of the following components:
 
 PostgreSQL database is a powerful, open source object-relational database system with over 35 years of active development that has earned it a strong reputation for reliability, feature robustness, and performance.
@@ -42,6 +44,7 @@ Prepare your Linux server to run patroni cluster
 Log in to your Linux server using a non-root user with sudo privileges and perform the following steps.
  
 Set correct timezone on each node:timedatectl set-timezone Asia/Riyadh
+
 ~~~bash
 nano /etc/hosts
 ````
