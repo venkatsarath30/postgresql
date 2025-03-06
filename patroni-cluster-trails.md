@@ -7,7 +7,7 @@ Virtual box setting. Should have two network adaptors. 1st for host on for host 
 cpu = 4 core
 RAM = 4 GB
 Disk = 50
-~~~
+```
 
 Patroni high availability cluster is comprised of the following components:
 
@@ -30,7 +30,7 @@ Basic environment for patroni cluster
 For the demonstration purpose, we will start with the basic environment to set up a 3-node patroni cluster on three separate virtual machines:
 will be installed on all nodes (Patroni, PostgreSQL, PgBouncer, Etcd, HAProxy, Keepalived)
 
-~~~bash
+```bash
 HOSTNAME	IP ADDRESS	SERVICES	
 pgsql01	192.168.56.231  (Patroni, PostgreSQL, PgBouncer, Etcd, HAProxy, Keepalived)
 pgsql02	192.168.56.232	(Patroni, PostgreSQL, PgBouncer, Etcd, HAProxy, Keepalived)
@@ -47,21 +47,22 @@ Log in to your Linux server using a non-root user with sudo privileges and perfo
  
 Set correct timezone on each node:timedatectl set-timezone Asia/Riyadh
 
-~~~bash
+```bash
 nano /etc/hosts
 ````
-~~~bash
+```bash
 192.168.56.231 pgsql01.localdomain pgsql01
 192.168.56.232 pgsql02.localdomain pgsql02
 192.168.56.233 pgsql03.localdomain pgsql03
-~~~
+```
 Save and close the editor when you are finished.
 Make sure you repeat the same on each node before proceeding to next.
 Disable SELINUX
-nano /etc/selinux/config
+```bash
+vi /etc/selinux/config
 Change SELINUX=enforcing to SELINUX=disabled
 Save and close the editor when you are finished.
-
+```
 Make sure you repeat the same on each node before proceeding to next. When you are finished, reboot each node to make the changes effect:
 shutdown -r now (or run "setenforce 0" to avoid restart)
 
@@ -77,7 +78,7 @@ The ports required for operating PostgreSQL HA cluster using (patroni, pgbouncer
 5001 HAProxy front-end listening port, required to establish connection to the back-end replica database servers via pgbouncer port 6432
 7000 HAProxy stats dashboard, required to access HAProxy web interface using HTTP.
 You can allow these required ports from firewalld using the following command:
-
+```bash
 sudo firewall-cmd --zone=public --add-port=5432/tcp --permanent
 sudo firewall-cmd --zone=public --add-port=6432/tcp --permanent
 sudo firewall-cmd --zone=public --add-port=8008/tcp --permanent
@@ -89,7 +90,7 @@ sudo firewall-cmd --zone=public --add-port=5001/tcp --permanent
 sudo firewall-cmd --zone=public --add-port=7000/tcp --permanent
 sudo firewall-cmd --add-rich-rule='rule protocol value="vrrp" accept' --permanent
 sudo firewall-cmd --reload
-
+```
 or disable firewall by "systemctl stop firewalld" then "systemctl disable firewalld"
 Make sure you repeat the same on each node before proceeding to next.   
 Install Required Repository
