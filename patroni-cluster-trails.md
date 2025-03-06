@@ -25,11 +25,13 @@ Patroni high availability cluster is comprised of the following components:
 Basic environment for patroni cluster
 For the demonstration purpose, we will start with the basic environment to set up a 3-node patroni cluster on three separate virtual machines:
 will be installed on all nodes (Patroni, PostgreSQL, PgBouncer, Etcd, HAProxy, Keepalived)
+~~~bash
 HOSTNAME	IP ADDRESS	SERVICES	
 pgsql01	192.168.56.231  (Patroni, PostgreSQL, PgBouncer, Etcd, HAProxy, Keepalived)
 pgsql02	192.168.56.232	(Patroni, PostgreSQL, PgBouncer, Etcd, HAProxy, Keepalived)
 pgsql03	192.168.56.233	(Patroni, PostgreSQL, PgBouncer, Etcd, HAProxy, Keepalived)
 SHARED IP(192.168.56.200)
+```
 We will install all the patroni cluster components on these three virtual machines.
 
 Now that you have understood patroni cluster components and its requirements, 
