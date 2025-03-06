@@ -119,14 +119,17 @@ sudo dnf -y install postgresql15-server postgresql15 postgresql15-devel
 
 sudo ln -s /usr/pgsql-15/bin/* /usr/sbin/
 ```
-Make sure you repeat the same on each node before proceeding to next.
+Make sure you repeat the same on all nodes before proceeding to next.
 --vid 01
 Install etcd
-The etcd package is not available in oracle Linux default repositories. To install etcd using dnf package manager, first you need to create a repo like below:
-sudo nano /etc/yum.repos.d/etcd.repo
 
+The etcd package is not available in oracle Linux default repositories. To install etcd using dnf package manager, first you need to create a repo like below:
+
+```bash
+sudo nano /etc/yum.repos.d/etcd.repo
+```
 Add following:
- 
+```bash 
 [etcd]
 name=PostgreSQL common RPMs for RHEL / oracle $releasever - $basearch
 baseurl=http://ftp.postgresql.org/pub/repos/yum/common/pgdg-rhel8-extras/redhat/rhel-$releasever-$basearch
@@ -134,7 +137,7 @@ enabled=1
 gpgcheck=1
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-PGDG
 repo_gpgcheck = 1
-
+```
 Save and close the editor when you are finished.
  
 Type following command to install etcd on your oracle Linux servers:
