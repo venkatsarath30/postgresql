@@ -120,7 +120,9 @@ sudo dnf -y install postgresql15-server postgresql15 postgresql15-devel
 sudo ln -s /usr/pgsql-15/bin/* /usr/sbin/
 ```
 Make sure you repeat the same on all nodes before proceeding to next.
+
 --vid 01
+
 Install etcd
 
 The etcd package is not available in oracle Linux default repositories. To install etcd using dnf package manager, first you need to create a repo like below:
