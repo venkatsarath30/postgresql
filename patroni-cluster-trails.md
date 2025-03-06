@@ -69,14 +69,16 @@ shutdown -r now (or run "setenforce 0" to avoid restart)
 Configure Firewalld
 The ports required for operating PostgreSQL HA cluster using (patroni, pgbouncer, etcd, haproxy, keepalived) are the following:
 
-**5432 Postgres database standard port.
+```bash
+5432 Postgres database standard port.
 6432 PgBouncer standard port.
 8008 patroni rest api port required by HAProxy to check the nodes status.
 2379 etcd client port required by any client including patroni to communicate with etcd cluster.
 2380 etcd peer urls port required by the etcd cluster members communication.
 5000 HAProxy front-end listening port, required to establish connection to the back-end masater database server via pgbouncer port 6432.
 5001 HAProxy front-end listening port, required to establish connection to the back-end replica database servers via pgbouncer port 6432
-7000 HAProxy stats dashboard, required to access HAProxy web interface using HTTP.**
+7000 HAProxy stats dashboard, required to access HAProxy web interface using HTTP.
+```
 
 You can allow these required ports from firewalld using the following command:
 ```bash
@@ -96,15 +98,17 @@ or disable firewall by "systemctl stop firewalld" then "systemctl disable firewa
 Make sure you repeat the same on each node before proceeding to next.   
 Install Required Repository
 Type below command to install EPEL repo on your oracle Linux servers:
- 
+```bash 
 sudo dnf install -y epel-release
-
+```
+```bash
 sudo dnf install -y yum-utils
+```
 Make sure you repeat the same on each node before proceeding to next.
 
 Install PostgreSQL
 Type below command to install PostgreSQL database release 15 on oracle Linux Servers: 
- 
+```bash 
 sudo dnf -y install https://download.postgresql.org/pub/repos/yum/reporpms/EL-8-x86_64/pgdg-redhat-repo-latest.noarch.rpm
 
 sudo dnf config-manager --enable pgdg15
@@ -114,7 +118,7 @@ sudo dnf module disable -y postgresql
 sudo dnf -y install postgresql15-server postgresql15 postgresql15-devel
 
 sudo ln -s /usr/pgsql-15/bin/* /usr/sbin/
-
+```
 Make sure you repeat the same on each node before proceeding to next.
 --vid 01
 Install etcd
