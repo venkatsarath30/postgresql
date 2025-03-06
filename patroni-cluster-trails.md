@@ -145,6 +145,7 @@ Save and close the editor when you are finished.
 Type following command to install etcd on your oracle Linux servers:
 ```bash 
 sudo dnf makecache
+```
 ```bash
 sudo dnf install -y etcd
 ```
@@ -175,12 +176,13 @@ ETCD_ENABLE_V2="true"
 Save and close the editor when you are finished.
 
 Edit /etc/etcd/etcd.conf file on your second node (pgsql02) in our case, to make the required changes:
-
+```bash
 sudo mv /etc/etcd/etcd.conf /etc/etcd/etcd.conf.orig
 
-sudo nano /etc/etcd/etcd.conf
+sudo vi /etc/etcd/etcd.conf
+```
 Add following configuration:
-
+```bash
 ETCD_NAME=pgsql02
 ETCD_DATA_DIR="/var/lib/etcd/pgsql02"
 ETCD_LISTEN_PEER_URLS="http://192.168.56.232:2380"
@@ -191,7 +193,7 @@ ETCD_INITIAL_CLUSTER_STATE="new"
 ETCD_INITIAL_CLUSTER_TOKEN="etcd-cluster"
 ETCD_ADVERTISE_CLIENT_URLS="http://192.168.56.232:2379"
 ETCD_ENABLE_V2="true"
-
+```
 Save and close the editor when you are finished.
  
 Edit /etc/etcd/etcd.conf file on your third node (pgsql03) in our case, to make the required changes:
