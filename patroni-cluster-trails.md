@@ -69,14 +69,15 @@ shutdown -r now (or run "setenforce 0" to avoid restart)
 Configure Firewalld
 The ports required for operating PostgreSQL HA cluster using (patroni, pgbouncer, etcd, haproxy, keepalived) are the following:
 
-5432 Postgres database standard port.
+**5432 Postgres database standard port.
 6432 PgBouncer standard port.
 8008 patroni rest api port required by HAProxy to check the nodes status.
 2379 etcd client port required by any client including patroni to communicate with etcd cluster.
 2380 etcd peer urls port required by the etcd cluster members communication.
 5000 HAProxy front-end listening port, required to establish connection to the back-end masater database server via pgbouncer port 6432.
 5001 HAProxy front-end listening port, required to establish connection to the back-end replica database servers via pgbouncer port 6432
-7000 HAProxy stats dashboard, required to access HAProxy web interface using HTTP.
+7000 HAProxy stats dashboard, required to access HAProxy web interface using HTTP.**
+
 You can allow these required ports from firewalld using the following command:
 ```bash
 sudo firewall-cmd --zone=public --add-port=5432/tcp --permanent
