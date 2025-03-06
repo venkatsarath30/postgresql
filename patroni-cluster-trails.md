@@ -25,6 +25,7 @@ Patroni high availability cluster is comprised of the following components:
 Basic environment for patroni cluster
 For the demonstration purpose, we will start with the basic environment to set up a 3-node patroni cluster on three separate virtual machines:
 will be installed on all nodes (Patroni, PostgreSQL, PgBouncer, Etcd, HAProxy, Keepalived)
+
 ~~~bash
 HOSTNAME	IP ADDRESS	SERVICES	
 pgsql01	192.168.56.231  (Patroni, PostgreSQL, PgBouncer, Etcd, HAProxy, Keepalived)
@@ -32,6 +33,7 @@ pgsql02	192.168.56.232	(Patroni, PostgreSQL, PgBouncer, Etcd, HAProxy, Keepalive
 pgsql03	192.168.56.233	(Patroni, PostgreSQL, PgBouncer, Etcd, HAProxy, Keepalived)
 SHARED IP(192.168.56.200)
 ```
+
 We will install all the patroni cluster components on these three virtual machines.
 
 Now that you have understood patroni cluster components and its requirements, 
@@ -40,10 +42,14 @@ Prepare your Linux server to run patroni cluster
 Log in to your Linux server using a non-root user with sudo privileges and perform the following steps.
  
 Set correct timezone on each node:timedatectl set-timezone Asia/Riyadh
+~~~bash
 nano /etc/hosts
+````
+~~~bash
 192.168.56.231 pgsql01.localdomain pgsql01
 192.168.56.232 pgsql02.localdomain pgsql02
 192.168.56.233 pgsql03.localdomain pgsql03
+~~~
 Save and close the editor when you are finished.
 Make sure you repeat the same on each node before proceeding to next.
 Disable SELINUX
