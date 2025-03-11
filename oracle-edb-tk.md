@@ -2,6 +2,7 @@
 
 This guide provides a **detailed step-by-step** process for migrating an Oracle database running on `192.168.17.101` to a PostgreSQL database on `192.168.17.102` using **EDB Migration Toolkit (MTK)**.
 
+### User Name & Passwords mentioned like Oracle_user * Postgres_user and passwords like Oracle_password and postgres_password. according to your requirements. you can change it as per your policy
 ---
 
 ## **1. Pre-Migration Assessment**  
@@ -36,7 +37,6 @@ Before starting the migration, perform the following checks:
    ```sh
    sudo yum install java-11-openjdk -y
    ```
-
 ### **b. Configure MTK Properties**  
 Edit the `migrationtoolkit.properties` file:
 ```sh
