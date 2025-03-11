@@ -168,8 +168,8 @@ diff oracle_schema.sql postgres_schema.sql
 - Decommission the Oracle database if necessary.
 
 ---
-
-### **🚀 Your migration from Oracle (192.168.17.101) to PostgreSQL (192.168.17.102) is now complete!**
+**Note:-** Test it on Lower Envirnoments first then, take it forward. 
+### ** Your migration from Oracle (192.168.17.101) to PostgreSQL (192.168.17.102) is now completed!** 
 ### Automation
 Here is a **bash script** to automate the migration from **Oracle (192.168.17.101)** to **PostgreSQL (192.168.17.102)** using **EDB Migration Toolkit (MTK)**.
 ```bash
