@@ -170,4 +170,74 @@ diff oracle_schema.sql postgres_schema.sql
 ---
 
 ### **🚀 Your migration from Oracle (192.168.17.101) to PostgreSQL (192.168.17.102) is now complete!**
-Would you like a script to automate this process? 😊
+### Automation
+Here is a **bash script** to automate the migration from **Oracle (192.168.17.101)** to **PostgreSQL (192.168.17.102)** using **EDB Migration Toolkit (MTK)**.
+```bash
+#!/bin/bash
+
+# Set Variables
+ORACLE_HOST="192.168.17.101"
+ORACLE_PORT="1521"
+ORACLE_USER="oracle_user"
+ORACLE_PASSWORD="oracle_password"
+ORACLE_DB="myoracledb"
+
+POSTGRES_HOST="192.168.17.102"
+POSTGRES_PORT="5432"
+POSTGRES_USER="postgres"
+POSTGRES_PASSWORD="postgres_password"
+POSTGRES_DB="mydb"
+
+MTK_PATH="/opt/edb-migrationtoolkit/bin/mtk"
+
+export PGPASSWORD=$POSTGRES_PASSWORD
+
+# Step 1: Schema Migration
+echo "Starting schema migration..."
+$MTK_PATH -sourcedbtype oracle -targetdbtype postgres \
+  -sourcehost $ORACLE_HOST -sourceuser $ORACLE_USER -sourcedb $ORACLE_DB \
+  -targethost $POSTGRES_HOST -targetuser $POSTGRES_USER -targetdb $POSTGRES_DB \
+  -table all -schemaonly
+
+echo "Schema migration completed."
+
+# Step 2: Data Migration
+echo "Starting data migration..."
+$MTK_PATH -sourcedbtype oracle -targetdbtype postgres \
+  -sourcehost $ORACLE_HOST -sourceuser $ORACLE_USER -sourcedb $ORACLE_DB \
+  -targethost $POSTGRES_HOST -targetuser $POSTGRES_USER -targetdb $POSTGRES_DB \
+  -table all -dataonly
+
+echo "Data migration completed."
+
+# Step 3: Functions, Triggers, and Procedures Migration
+echo "Migrating functions, triggers, and procedures..."
+$MTK_PATH -sourcedbtype oracle -targetdbtype postgres \
+  -sourcehost $ORACLE_HOST -sourceuser $ORACLE_USER -sourcedb $ORACLE_DB \
+  -targethost $POSTGRES_HOST -targetuser $POSTGRES_USER -targetdb $POSTGRES_DB \
+  -objecttype function,trigger,procedure
+
+echo "Functions and triggers migrated successfully."
+
+# Step 4: Run ANALYZE and VACUUM
+echo "Optimizing PostgreSQL database..."
+psql -h $POSTGRES_HOST -U $POSTGRES_USER -d $POSTGRES_DB -c "ANALYZE;"
+psql -h $POSTGRES_HOST -U $POSTGRES_USER -d $POSTGRES_DB -c "VACUUM ANALYZE;"
+
+echo "Migration completed successfully!"
+```
+
+### Explanation of the Steps:
+1. **Schema Migration**  
+   - Copies the table structure, indexes, constraints, and sequences.
+   
+2. **Data Migration**  
+   - Transfers all the data from Oracle to PostgreSQL.
+
+3. **Functions, Triggers, and Procedures Migration**  
+   - Converts PL/SQL objects into PL/pgSQL.
+
+4. **Optimization**  
+   - Runs `ANALYZE` and `VACUUM ANALYZE` to optimize PostgreSQL performance.
+
+
