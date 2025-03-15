@@ -1,10 +1,6 @@
-### **🔹 Creating `emp1` Table & Inserting 300 Indian Names in PostgreSQL**  
-This script:  
-✅ Creates **`emp1` table** with **correct data types** for PostgreSQL.  
-✅ Inserts **300 sample Indian employee records** with **realistic names, cities, and designations**.  
+### **🔹 Creating `emp1` Table & Inserting some records in PostgreSQL**  
 
 ---
-
 ### **📌 Step 1: Create `emp1` Table in PostgreSQL**
 #### **✅ Corrected Data Types**  
 - **`id`** → `SERIAL` (Auto-increment primary key)  
