@@ -88,7 +88,7 @@ SELECT * FROM emp1 WHERE city = 'Bangalore';
 ```sql
 SELECT city, AVG(salary) FROM emp1 GROUP BY city;
 ```
-***Insert 30+ Employee Records in PostgreSQL
+### Insert 30+ Employee Records in PostgreSQL
 ```sql
 INSERT INTO emp1 (name, city, desg, salary, age) VALUES
 ('Amit Sharma', 'Delhi', 'Software Engineer', 75000.00, 28),
