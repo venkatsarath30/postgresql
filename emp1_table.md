@@ -188,5 +188,14 @@ SELECT * FROM emp1 WHERE name IN (
   'Sarita Roy', 'Lavanya Choudhary', 'Tanya Kulkarni'
 );
 ```
-
+```sql
+DELETE FROM emp1 WHERE name IN (
+  'Priya Sharma', 'Ananya Verma', 'Sneha Iyer', 'Kavita Reddy', 'Meena Joshi', 
+  'Swati Nair', 'Neha Pillai', 'Divya Malhotra', 'Roshni Singh', 'Shalini Mehta',
+  'Amrita Patil', 'Gayatri Saxena', 'Pooja Rao', 'Rekha Deshmukh', 'Bhavana Kapoor',
+  'Arpita Menon', 'Nidhi Das', 'Sujata Agarwal', 'Jaya Ramesh', 'Ritika Naik',
+  'Madhuri Khanna', 'Nandini Pandey', 'Renu Pillai', 'Vandana Deshmukh', 'Archana Bhat',
+  'Sarita Roy', 'Lavanya Choudhary', 'Tanya Kulkarni'
+);
+```
 
