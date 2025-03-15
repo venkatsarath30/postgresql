@@ -24,7 +24,7 @@ CREATE TABLE emp1 (
 
 ---
 
-### **📌 Step 2: Insert 300 Sample Indian Employee Records**
+### **📌 Step 2: Insert 30+ Sample Indian Employee Records**
 ```sql
 INSERT INTO emp1 (name, city, desg, salary, age) VALUES 
 ('Amit Sharma', 'Delhi', 'Software Engineer', 75000.00, 28),
@@ -70,10 +70,6 @@ INSERT INTO emp1 (name, city, desg, salary, age) VALUES
 ('Kunal Chopra', 'Kolkata', 'Content Strategist', 76000.00, 31),
 ('Sunita Jha', 'Pune', 'Data Engineer', 108000.00, 30);
 ```
-📌 **Repeat similar insert statements to reach 300 rows.**  
-(For larger datasets, you can use **Python or SQL loops** to generate data automatically.)
-
----
 
 ## **📌 Step 3: Verify Inserted Records**
 ### **Check All Rows**
@@ -92,8 +88,8 @@ SELECT * FROM emp1 WHERE city = 'Bangalore';
 ```sql
 SELECT city, AVG(salary) FROM emp1 GROUP BY city;
 ```
-***Insert 30 Employee Records in PostgreSQL
-```bash
+***Insert 30+ Employee Records in PostgreSQL
+```sql
 INSERT INTO emp1 (name, city, desg, salary, age) VALUES
 ('Amit Sharma', 'Delhi', 'Software Engineer', 75000.00, 28),
 ('Priya Verma', 'Mumbai', 'Data Analyst', 68000.00, 26),
@@ -125,4 +121,4 @@ INSERT INTO emp1 (name, city, desg, salary, age) VALUES
 ('Pooja Kulkarni', 'Pune', 'HR Executive', 72000.00, 29),
 ('Rahul Sinha', 'Delhi', 'SEO Specialist', 66000.00, 28),
 ('Seema Yadav', 'Mumbai', 'Sales Executive', 75000.00, 27);
-```bash
+```
