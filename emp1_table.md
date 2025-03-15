@@ -146,7 +146,7 @@ INSERT INTO emp1 (name, city, desg, salary, age) VALUES
 ('Tarun Khanna', 'Kolkata', 'Marketing Manager', 102000.00, 36),
 ('Gopal Naik', 'Delhi', 'Database Architect', 113000.00, 37);
 ```
-~~~sql
+```sql
 INSERT INTO emp1 (name, city, desg, salary, age) VALUES
 ('Priya Sharma', 'Mumbai', 'Software Engineer', 75000.00, 28),
 ('Ananya Verma', 'Delhi', 'Data Analyst', 72000.00, 26),
