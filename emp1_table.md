@@ -123,7 +123,7 @@ INSERT INTO emp1 (name, city, desg, salary, age) VALUES
 ('Seema Yadav', 'Mumbai', 'Sales Executive', 75000.00, 27);
 ```
 ### Some more records
-```SQL
+```sql
 INSERT INTO emp1 (name, city, desg, salary, age) VALUES
 ('Rajesh Kumar', 'Hyderabad', 'Software Engineer', 75000.00, 28),
 ('Priya Verma', 'Chennai', 'Data Analyst', 68000.00, 26),
@@ -146,7 +146,7 @@ INSERT INTO emp1 (name, city, desg, salary, age) VALUES
 ('Tarun Khanna', 'Kolkata', 'Marketing Manager', 102000.00, 36),
 ('Gopal Naik', 'Delhi', 'Database Architect', 113000.00, 37);
 ```
-~~~SQL
+~~~sql
 INSERT INTO emp1 (name, city, desg, salary, age) VALUES
 ('Priya Sharma', 'Mumbai', 'Software Engineer', 75000.00, 28),
 ('Ananya Verma', 'Delhi', 'Data Analyst', 72000.00, 26),
@@ -178,7 +178,7 @@ INSERT INTO emp1 (name, city, desg, salary, age) VALUES
 ('Tanya Kulkarni', 'Pune', 'HR Executive', 74000.00, 29);
 ```
 
-```SQL
+```sql
 SELECT * FROM emp1 WHERE name IN (
   'Priya Sharma', 'Ananya Verma', 'Sneha Iyer', 'Kavita Reddy', 'Meena Joshi', 
   'Swati Nair', 'Neha Pillai', 'Divya Malhotra', 'Roshni Singh', 'Shalini Mehta',
