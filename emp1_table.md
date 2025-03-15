@@ -122,3 +122,71 @@ INSERT INTO emp1 (name, city, desg, salary, age) VALUES
 ('Rahul Sinha', 'Delhi', 'SEO Specialist', 66000.00, 28),
 ('Seema Yadav', 'Mumbai', 'Sales Executive', 75000.00, 27);
 ```
+### Some more records
+```SQL
+INSERT INTO emp1 (name, city, desg, salary, age) VALUES
+('Rajesh Kumar', 'Hyderabad', 'Software Engineer', 75000.00, 28),
+('Priya Verma', 'Chennai', 'Data Analyst', 68000.00, 26),
+('Sneha Reddy', 'Pune', 'Project Manager', 120000.00, 35),
+('Sanjay Mehta', 'Mumbai', 'Network Engineer', 72000.00, 29),
+('Amit Sharma', 'Kolkata', 'Database Administrator', 85000.00, 30),
+('Ravi Gupta', 'Bangalore', 'Cloud Engineer', 93000.00, 27),
+('Ananya Iyer', 'Delhi', 'Security Analyst', 89000.00, 31),
+('Neha Singh', 'Hyderabad', 'System Architect', 150000.00, 40),
+('Vikram Malhotra', 'Mumbai', 'Software Developer', 77000.00, 25),
+('Arjun Nair', 'Pune', 'DevOps Engineer', 96000.00, 32),
+('Dinesh Kapoor', 'Chennai', 'Quality Analyst', 69000.00, 27),
+('Kavita Joshi', 'Kolkata', 'HR Manager', 98000.00, 35),
+('Prakash Rao', 'Bangalore', 'Frontend Developer', 72000.00, 28),
+('Meena Pillai', 'Delhi', 'Product Manager', 125000.00, 38),
+('Deepak Agarwal', 'Mumbai', 'Backend Developer', 86000.00, 30),
+('Swati Saxena', 'Hyderabad', 'UX Designer', 74000.00, 26),
+('Rohan Das', 'Pune', 'Cybersecurity Expert', 99000.00, 33),
+('Shalini Menon', 'Bangalore', 'Business Analyst', 87000.00, 31),
+('Tarun Khanna', 'Kolkata', 'Marketing Manager', 102000.00, 36),
+('Gopal Naik', 'Delhi', 'Database Architect', 113000.00, 37);
+```
+~~~SQL
+INSERT INTO emp1 (name, city, desg, salary, age) VALUES
+('Priya Sharma', 'Mumbai', 'Software Engineer', 75000.00, 28),
+('Ananya Verma', 'Delhi', 'Data Analyst', 72000.00, 26),
+('Sneha Iyer', 'Bangalore', 'Project Manager', 115000.00, 35),
+('Kavita Reddy', 'Hyderabad', 'Network Engineer', 73000.00, 29),
+('Meena Joshi', 'Chennai', 'Database Administrator', 87000.00, 30),
+('Swati Nair', 'Kolkata', 'Cloud Engineer', 94000.00, 27),
+('Neha Pillai', 'Pune', 'Security Analyst', 91000.00, 31),
+('Divya Malhotra', 'Delhi', 'System Architect', 155000.00, 40),
+('Roshni Singh', 'Mumbai', 'Software Developer', 78000.00, 25),
+('Shalini Mehta', 'Bangalore', 'DevOps Engineer', 97000.00, 32),
+('Amrita Patil', 'Hyderabad', 'Quality Analyst', 70000.00, 27),
+('Gayatri Saxena', 'Chennai', 'HR Manager', 99000.00, 35),
+('Pooja Rao', 'Kolkata', 'Frontend Developer', 73000.00, 28),
+('Rekha Deshmukh', 'Pune', 'Product Manager', 127000.00, 38),
+('Bhavana Kapoor', 'Delhi', 'Backend Developer', 88000.00, 30),
+('Arpita Menon', 'Mumbai', 'UX Designer', 75000.00, 26),
+('Nidhi Das', 'Bangalore', 'Cybersecurity Expert', 100000.00, 33),
+('Sujata Agarwal', 'Hyderabad', 'Business Analyst', 89000.00, 31),
+('Jaya Ramesh', 'Chennai', 'Software Engineer', 76000.00, 27),
+('Ritika Naik', 'Kolkata', 'Database Architect', 114000.00, 37),
+('Madhuri Khanna', 'Pune', 'Marketing Manager', 103000.00, 36),
+('Nandini Pandey', 'Delhi', 'Scrum Master', 91000.00, 34),
+('Renu Pillai', 'Mumbai', 'Cloud Consultant', 109000.00, 39),
+('Vandana Deshmukh', 'Bangalore', 'Data Scientist', 126000.00, 29),
+('Archana Bhat', 'Hyderabad', 'Full Stack Developer', 99000.00, 30),
+('Sarita Roy', 'Chennai', 'QA Lead', 93000.00, 33),
+('Lavanya Choudhary', 'Kolkata', 'IT Support Engineer', 69000.00, 26),
+('Tanya Kulkarni', 'Pune', 'HR Executive', 74000.00, 29);
+```
+
+```SQL
+SELECT * FROM emp1 WHERE name IN (
+  'Priya Sharma', 'Ananya Verma', 'Sneha Iyer', 'Kavita Reddy', 'Meena Joshi', 
+  'Swati Nair', 'Neha Pillai', 'Divya Malhotra', 'Roshni Singh', 'Shalini Mehta',
+  'Amrita Patil', 'Gayatri Saxena', 'Pooja Rao', 'Rekha Deshmukh', 'Bhavana Kapoor',
+  'Arpita Menon', 'Nidhi Das', 'Sujata Agarwal', 'Jaya Ramesh', 'Ritika Naik',
+  'Madhuri Khanna', 'Nandini Pandey', 'Renu Pillai', 'Vandana Deshmukh', 'Archana Bhat',
+  'Sarita Roy', 'Lavanya Choudhary', 'Tanya Kulkarni'
+);
+```
+
+
