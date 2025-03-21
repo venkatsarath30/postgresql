@@ -87,9 +87,10 @@ REINDEX DATABASE my_pg_database;
 3️⃣ **Restore schema** using `psql -f export_schema.sql`  
 4️⃣ **Restore data** using `psql -f export_data.sql`  
 5️⃣ **Verify data & optimize PostgreSQL performance**  
-########################################################
 
-If you encounter any issues during the restoration process in Ora2Pg, here are some additional details and troubleshooting tips:
+---
+
+If you encounter any issues during the restoration process in Ora2Pg, here are some troubleshooting tips:
 
 ---
 
