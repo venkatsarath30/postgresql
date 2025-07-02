@@ -1,6 +1,3 @@
-<img src="https://r2cdn.perplexity.ai/pplx-full-logo-primary-dark%402x.png" class="logo" width="120"/>
-
-# this link make it proper md file with good  look https://github.com/venkatsarath30/postgresql/blob/main/patroni-cluster-not-tested.md
 
 Below is a **well-formatted, visually appealing Markdown file** for setting up and understanding a Patroni-managed PostgreSQL cluster. This template is based on best practices and typical documentation structures for open source HA PostgreSQL clusters with Patroni. The content is original, as the actual file content from your link could not be loaded directly[^1].
 
@@ -193,42 +190,4 @@ server node3 192.168.1.13:5432 check port 8008
 
 ---
 
-> **Disclaimer:**  
-> This is a reference configuration. Adapt and thoroughly test before using in production.
-
-```
-
-**Key improvements for readability and professionalism:**
-
-- **Section headers** for quick navigation.
-- **Code blocks** for configuration and commands.
-- **Blockquotes** for tips and disclaimers.
-- **Bold and italic text** for emphasis.
-- **Clear separation** of steps and configuration examples.
-
-If you have the actual content of the original `.md` file, paste it here and I can further refine or reformat it with the same styling and structure.
-
-<div style="text-align: center">⁂</div>
-
-[^1]: https://github.com/venkatsarath30/postgresql/blob/main/patroni-cluster-not-tested.md
-
-[^2]: https://www.percona.com/blog/administering-a-patroni-managed-postgresql-cluster/
-
-[^3]: https://www.percona.com/blog/postgresql-ha-with-patroni-your-turn-to-test-failure-scenarios/
-
-[^4]: https://docs.percona.com/postgresql/14/solutions/ha-test.html
-
-[^5]: https://patroni.readthedocs.io/en/latest/README.html
-
-[^6]: https://access.crunchydata.com/documentation/patroni/latest/pdf/patroni.pdf
-
-[^7]: https://blog.palark.com/migrating-a-postgresql-cluster-managed-by-patroni/
-
-[^8]: https://patroni.readthedocs.io/en/master/releases.html
-
-[^9]: https://www.citusdata.com/blog/2023/03/06/patroni-3-0-and-citus-scalable-ha-postgres/
-
-[^10]: https://jfrog.com/community/devops/highly-available-postgresql-cluster-using-patroni-and-haproxy/
-
-[^11]: https://patroni.readthedocs.io/en/latest/existing_data.html
 
