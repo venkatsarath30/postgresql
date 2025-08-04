@@ -3,7 +3,8 @@ PostgreSQL AWS RDS interview questions
 ### 1. Explain the difference between AWS RDS PostgreSQL and self-managed PostgreSQL on EC2.
 
 **Answer:**  
-AWS RDS PostgreSQL is a managed service, so AWS automates backups, patching, monitoring, scaling, and failover. You don’t have OS-level access. With self-managed PostgreSQL on EC2, you control the OS, storage, network, database configuration, extensions, monitoring, and backups, but also bear full operational responsibility, including upgrades, failover, HA, and backups.
+AWS RDS PostgreSQL is a managed service, so AWS automates backups, patching, monitoring, scaling, and failover. 
+You don’t have OS-level access. With self-managed PostgreSQL on EC2, you control the OS, storage, network, database configuration, extensions, monitoring, and backups, but also bear full operational responsibility, including upgrades, failover, HA, and backups.
 
 ### 2. How does RDS handle failover and what is Multi-AZ deployment?
 
