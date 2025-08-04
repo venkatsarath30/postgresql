@@ -1,6 +1,6 @@
 ## 1. **Core Application Overview**
 
-###Your Zomato-like application handles:
+### Your Zomato-like application handles:
 - User/restaurant registration
 - Menu management
 - Order placement and tracking
