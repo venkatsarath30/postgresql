@@ -5,7 +5,7 @@ Here is a complete, clean, and practical script and step guide for setting up **
 - **Source DB:** logicadb  
 - **Target DB:** repdb
 
-# Objective: How to Set Up PostgreSQL Logical Replication
+### Objective: How to Set Up PostgreSQL Logical Replication
 
 ## 1. Master/Publisher Server Setup (192.168.17.101)
 
