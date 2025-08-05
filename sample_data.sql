@@ -291,4 +291,7 @@ INSERT INTO entertainment (id, name) VALUES (48, 'Open Mics');
 INSERT INTO entertainment (id, name) VALUES (49, 'Interview Shows');
 INSERT INTO entertainment (id, name) VALUES (50, 'Celebrity Interviews');
 ```
-
+---- importing the data
+```
+psql -U postgres -d empdb -f insert_data.sql
+```
