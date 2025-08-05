@@ -158,8 +158,3 @@ SELECT * FROM skills;
 - Logical replication is flexible for cross-platform (Linux/Windows) replication.
 - Check logs and use monitoring queries for troubleshooting.
 
-This guide covers the end-to-end logical replication setup process and includes typical administrative operations and troubleshooting notes for a robust, production-like environment.[1][2][3]
-
-[1] https://hevodata.com/learn/postgresql-logical-replication/
-[2] https://www.postgresql.org/docs/current/logical-replication.html
-[3] https://dev.to/raselmahmuddev/how-to-set-up-postgresql-logical-replication-use-cases-and-step-by-step-guide-536b
