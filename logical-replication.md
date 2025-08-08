@@ -1,16 +1,19 @@
-Here is a complete, clean, and practical script and step guide for setting up **PostgreSQL Logical Replication** between two servers:  
-- **Master/Publisher:** 192.168.17.101  
-- **Standby/Subscriber:** 192.168.17.102  
-- **User:** repuser / Password: rep123  
+### Implementing Postgres Logical Replication
+
+# PostgreSQL Logical Replication: Clean Guide
+
+- **Master/Publisher:** 10.0.0.4  
+- **Standby/Subscriber:** 10.0.1.4  
+- **Replication User:** repuser / rep123  
 - **Source DB:** logicadb  
 - **Target DB:** repdb
 
-### Objective: How to Set Up PostgreSQL Logical Replication
+***
 
-## 1. Master/Publisher Server Setup (192.168.17.101)
+## 1. Master/Publisher Setup (10.0.0.4)
 
 ### 1.1 Edit `postgresql.conf`
-Open your server’s `postgresql.conf` file and set:
+Set these values:
 ```conf
 listen_addresses = '*'
 wal_level = logical
@@ -19,28 +22,27 @@ max_wal_senders = 10
 ```
 
 ### 1.2 Edit `pg_hba.conf`
-Add the Standby server’s IP to allow connections and replication for the repuser:
+Add the subscriber’s IP:
 ```
-host    all            repuser    192.168.17.102/32     md5
-host    replication    repuser    192.168.17.102/32     md5
+host    all            repuser    10.0.1.4/32     md5
+host    replication    repuser    10.0.1.4/32     md5
 ```
 
-### 1.3 Create/Alter Replication User
-Connect as a superuser and create the user (or ensure superuser flag):
+### 1.3 Create/Modify Replication User
+Connect to PostgreSQL (as superuser):
 ```sql
 CREATE ROLE repuser WITH REPLICATION LOGIN ENCRYPTED PASSWORD 'rep123';
--- OR, if already exists:
+-- or, if already exists:
 ALTER ROLE repuser WITH SUPERUSER ENCRYPTED PASSWORD 'rep123';
-\du  -- List users and privileges
+\du  -- View user privileges
 ```
 
 ### 1.4 Restart PostgreSQL
-Apply config changes:
-```shell
+```bash
 sudo systemctl restart postgresql
 ```
 
-### 1.5 Create Database and Tables for Replication
+### 1.5 Create Database and Tables
 ```sql
 CREATE DATABASE logicadb OWNER repuser;
 \c logicadb
@@ -57,37 +59,39 @@ INSERT INTO dept VALUES (1,'CIS','Cognizant');
 
 ### 1.6 Create Publication
 ```sql
--- To replicate all tables:
 CREATE PUBLICATION mypub FOR ALL TABLES;
--- Or only specific tables:
+-- or for certain tables only:
 -- CREATE PUBLICATION mypub FOR TABLE emp, dept;
 \dRp  -- View publications
 ```
 
-## 2. Standby/Subscriber Server Setup (192.168.17.102)
+***
 
-### 2.1 Edit `postgresql.conf` and `pg_hba.conf` (OPTIONAL)
-**You only need to edit these files if you plan to use the standby as a publisher for cascading or future replication:**
+## 2. Standby/Subscriber Setup (10.0.1.4)
+
+### 2.1 (OPTIONAL) Edit config for future cascading replication
 
 #### `postgresql.conf`
 ```conf
 listen_addresses = '*'
-wal_level = logical                  # Needed for cascading logical replication
-max_replication_slots = 10           # Adjust for expected subscribers
-max_wal_senders = 10                 # Adjust for expected subscribers
+wal_level = logical
+max_replication_slots = 10
+max_wal_senders = 10
 ```
+
 #### `pg_hba.conf`
-Add IP(s) of cascading standbys or admin hosts, e.g.:
+(Only if you expect future subscribers):
 ```
 host    all            repuser    /32     md5
 host    replication    repuser    /32     md5
 ```
-Reload or restart to apply:
-```shell
+
+#### Reload PostgreSQL
+```bash
 sudo systemctl restart postgresql
 ```
 
-### 2.2 Create Database and Matching Tables
+### 2.2 Create Target Database and Matching Schema
 ```sql
 CREATE DATABASE repdb OWNER repuser;
 \c repdb
@@ -99,28 +103,31 @@ CREATE TABLE dept(id INT, dept VARCHAR(30), company VARCHAR(20));
 ### 2.3 Create Subscription
 ```sql
 CREATE SUBSCRIPTION mysub
-  CONNECTION 'host=192.168.17.101 port=5432 dbname=logicadb user=repuser password=rep123'
+  CONNECTION 'host=10.0.0.4 port=5432 dbname=logicadb user=repuser password=rep123'
   PUBLICATION mypub;
 \dRs  -- View subscriptions
 ```
 
+***
+
 ## 3. Test Replication
 
-- Add/change records on the master and confirm they appear on the standby.
+- Add/changing records on master, confirm on subscriber.
 
 **Example:**
 ```sql
--- On master:
+-- On master (10.0.0.4):
 INSERT INTO emp VALUES (4, 'Santhosh', 'Cloud Manager');
 
--- On standby:
+-- On standby (10.0.1.4):
 SELECT * FROM emp;
 ```
 
-## 4. Publishing Schema Changes
+***
 
-- Add new tables FIRST on both master and subscriber.
-- Alter publication and refresh subscription to include new tables:
+## 4. Replicating Schema Changes
+
+- Schema changes (new tables) must be created on both, then add to publication and refresh.
 
 **On Master:**
 ```sql
@@ -128,33 +135,40 @@ ALTER PUBLICATION mypub ADD TABLE skills;
 CREATE TABLE skills(id INT PRIMARY KEY, name VARCHAR(30), status VARCHAR(20));
 INSERT INTO skills VALUES (1,'java','technical'), (2,'dba','infrastructure');
 ```
-**On Subscriber:**
+**On Standby:**
 ```sql
 CREATE TABLE skills(id INT PRIMARY KEY, name VARCHAR(30), status VARCHAR(20));
 ALTER SUBSCRIPTION mysub REFRESH PUBLICATION;
 SELECT * FROM skills;
 ```
 
+***
+
 ## 5. Monitoring and Maintenance
 
-- **Check status on master:**
+- **Master:**
     ```sql
     SELECT * FROM pg_replication_slots;
     SELECT * FROM pg_stat_replication;
     SELECT * FROM pg_publication;
     ```
-- **Check status on subscriber:**
+- **Standby:**
     ```sql
     SELECT * FROM pg_stat_subscription;
     SELECT * FROM pg_subscription;
     ```
 
-- **Drop and recreate publications/subscriptions or replication slots as needed** if issues arise.
+- Recreate publications/subscriptions if issues arise.
 
-## 6. Notes & Best Practices
+***
 
-- **DDL changes (like CREATE TABLE, ADD COLUMN, etc.) are NOT replicated automatically**. Always run schema changes on both master and subscriber.
-- Publication/subscription changes require “refresh” via `ALTER SUBSCRIPTION mysub REFRESH PUBLICATION;` on the subscriber when you add new tables to a publication.
-- Logical replication is flexible for cross-platform (Linux/Windows) replication.
-- Check logs and use monitoring queries for troubleshooting.
+## 6. Best Practices & Tips
 
+- DDL (structure) changes are NOT replicated—always apply on both sides.
+- After changes to what’s published, always run `ALTER SUBSCRIPTION ... REFRESH PUBLICATION`.
+- Logical replication works between different platforms and can be cascaded.
+- Monitor logs and stats for troubleshooting.
+
+***
+
+This step-by-step, practical script will help you quickly and reliably establish logical replication between 10.0.0.4 (publisher) and 10.0.1.4 (subscriber), with easy customizations for other projects or environments.
