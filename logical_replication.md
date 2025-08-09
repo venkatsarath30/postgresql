@@ -169,5 +169,5 @@ Your configs allow either node to switch roles instantly for failover — promot
 
 ***
 
-**Your configuration is now fully validated for logical replication, multi-directional access, and future role-switching/failover.  
+**above configuration is now fully validated for logical replication, multi-directional access, and future role-switching/failover.  
 No further edits required—just reload and test!**
