@@ -171,4 +171,3 @@ SELECT * FROM skills;
 
 ***
 
-This step-by-step, practical script will help you quickly and reliably establish logical replication between 10.0.0.4 (publisher) and 10.0.1.4 (subscriber), with easy customizations for other projects or environments.
