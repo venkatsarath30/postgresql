@@ -12,9 +12,9 @@ This includes:
 
 ***
 
-## Logical Replication Full Guide
+# Logical Replication Complete Setup
 
-#### 1. PostgreSQL Configuration (`postgresql.conf`)
+## 1. PostgreSQL Configuration (`postgresql.conf`)
 
 **On BOTH Publisher & Subscriber**, set:
 ```conf
