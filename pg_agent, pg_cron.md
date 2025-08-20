@@ -78,8 +78,13 @@ Edit `postgresql.conf`:
 
 ```conf
 shared_preload_libraries = 'pg_cron'
-cron.database_name = 'postgres'   # Or your target database
-cron.timezone = 'Asia/Kolkata'    # Set your timezone (optional)
+
+# Set this to your application database name instead of 'postgres'
+cron.database_name = 'your_application_db'
+
+# Optional: set timezone for cron jobs (e.g., IST timezone)
+cron.timezone = 'Asia/Kolkata'
+
 ```
 
 Restart PostgreSQL server afterward.
